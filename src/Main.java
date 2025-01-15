@@ -2,19 +2,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Create a new library
         Library library = new Library("City Central Library");
 
-        // Add some books to the library
         library.addBook(new Book("Java Programming", "James Gosling", "12345"));
         library.addBook(new Book("Data Structures", "Donald Knuth", "67890"));
         library.addBook(new Book("Algorithms", "Robert Sedgewick", "11223"));
 
-        // Add some members to the library
         library.addMember(new LibraryMember("John Doe", "M001", 25));
         library.addMember(new LibraryMember("Jane Smith", "M002", 30));
 
-        // Start interacting with the user
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -27,14 +23,13 @@ public class Main {
             System.out.println("5. Exit");
 
             int option = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
                     library.showBooks();
                     break;
                 case 2:
-                    // Borrow a book
                     System.out.println("Enter your member ID: ");
                     String memberId = scanner.nextLine();
                     System.out.println("Enter book title to borrow: ");
@@ -50,7 +45,6 @@ public class Main {
                     }
                     break;
                 case 3:
-                    // Return a book
                     System.out.println("Enter your member ID: ");
                     String returnMemberId = scanner.nextLine();
                     System.out.println("Enter book title to return: ");
@@ -66,11 +60,9 @@ public class Main {
                     }
                     break;
                 case 4:
-                    // Show all members
                     library.showMembers();
                     break;
                 case 5:
-                    // Exit the program
                     exit = true;
                     break;
                 default:

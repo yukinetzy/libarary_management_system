@@ -1,4 +1,6 @@
-public class Book {
+import java.util.Objects;
+
+class Book {
     private String title;
     private String author;
     private String ISBN;
@@ -15,12 +17,24 @@ public class Book {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getAuthor() {
         return author;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getISBN() {
         return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public boolean isAvailable() {
@@ -44,5 +58,18 @@ public class Book {
     @Override
     public String toString() {
         return "Book: " + title + ", Author: " + author + ", ISBN: " + ISBN + ", Available: " + (isAvailable ? "Yes" : "No");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return Objects.equals(title, book.title) && Objects.equals(ISBN, book.ISBN);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, ISBN);
     }
 }

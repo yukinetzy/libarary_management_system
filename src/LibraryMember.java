@@ -1,28 +1,36 @@
-public class LibraryMember {
-    private String name;
+
+import java.util.Objects;
+
+class LibraryMember extends Person {
     private String memberID;
-    private int age;
 
     public LibraryMember(String name, String memberID, int age) {
-        this.name = name;
+        super(name, age);
         this.memberID = memberID;
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getMemberID() {
         return memberID;
     }
 
-    public int getAge() {
-        return age;
+    public void setMemberID(String memberID) {
+        this.memberID = memberID;
     }
 
     @Override
     public String toString() {
-        return "Library Member: " + name + ", ID: " + memberID + ", Age: " + age;
+        return super.toString() + ", Member ID: " + memberID;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        LibraryMember that = (LibraryMember) obj;
+        return Objects.equals(memberID, that.memberID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), memberID);
     }
 }
